@@ -1,0 +1,23 @@
+{{ block title }}
+    Payment details
+{{ endblock }}
+{{ block content }}
+
+    <p>
+        To send you your final payment, please provide your international bank account number (IBAN). 
+    </p>
+
+    <p>
+        <em>Please make sure to enter your IBAN including the two first characters, but avoid spaces. </em>
+    </p>
+   
+    {{ formfields }}
+
+    {{ next_button }}
+
+{{ endblock }}
+
+
+{{ block styles }}
+    <link rel="stylesheet" href="{{ static 'global/custom.css' }}">
+{{ endblock }}

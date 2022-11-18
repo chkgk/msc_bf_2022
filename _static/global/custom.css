@@ -1,0 +1,18 @@
+input[type='range'] {
+    width: 100%;
+}
+.page-header {
+    padding: 0;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+p:has(.otree-btn-next) {
+    text-align: center;
+}
+
+.w-33 {
+    width: 33%!important;
+}
