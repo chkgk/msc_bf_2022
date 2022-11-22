@@ -1,0 +1,38 @@
+{{ block title }}
+    Consent
+{{ endblock }}
+{{ block content }}
+
+    <p><b>Project:</b><br>
+        The individual parts of this study were designed by students from the Masters' course in Applied Behavioral Finance in partial fulfillment of their course requirements. 
+    </p>
+
+    <p><b>Duration and Rewards:</b><br>
+        The study takes roughly 15 minutes to complete. You will receive two extra credit points for participation. In addition, there is a 10% chance that you win a fixed reward of 50 EUR.
+    </p>
+
+    <p><b>Confidentiality:</b><br>
+        All data we collect is treated confidentially and will only be used for our research purpose. Your name will not be linked to the results.
+    </p>
+
+    <p><b>Requirements:</b><br>
+        At the end of the study, you need to provide a valid International Bank Account Number (IBAN) so we can process your payment.
+    </p>
+
+    <p><b>Voluntary participation:</b><br>
+        Participation in this study is voluntary.
+    </p>
+
+    <p><b>Contact</b><br>
+        If you have any questions regarding this study, please contact Christian Koenig (<a href="mailto:christian.koenig@uibk.ac.at">christian.koenig@uibk.ac.at</a>).
+    </p>
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+{{ endblock }}
+
+{{ block styles }}
+    <link rel="stylesheet" href="{{ static 'global/custom.css' }}">
+{{ endblock }}

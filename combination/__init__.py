@@ -31,6 +31,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    consent_given = models.BooleanField(initial=False, widget=widgets.CheckboxInput, label="I confirm that I have read these instructions, agree with them, and want to participate in this study.")
     click_count_link_1 = models.IntegerField(initial=0)
     click_count_link_2 = models.IntegerField(initial=0)
     click_count_link_3 = models.IntegerField(initial=0)
@@ -43,6 +44,11 @@ class Player(BasePlayer):
 
 
 # PAGES
+class Consent(Page):
+    form_model = 'player'
+    form_fields = ['consent_given']
+
+
 class Instructions(Page):
     pass
 
@@ -70,6 +76,7 @@ def creating_session(subsession: Subsession):
 
 
 page_sequence = [
+    Consent,
     Instructions,
     Distribution
 ]
