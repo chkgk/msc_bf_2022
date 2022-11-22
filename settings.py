@@ -7,18 +7,18 @@ SESSION_CONFIGS = [
         app_sequence=['combination', 'fernandes_fin_lit', 'questionnaires'],
         num_demo_participants=4
     ),
-    dict(
-        name='questionnaires',
-        display_name="Demographics / common questions",
-        app_sequence=['questionnaires'],
-        num_demo_participants=4
-    ),
-    dict(
-        name='fernandes',
-        display_name="Fernandes et al. 2014 - Financial Literacy",
-        app_sequence=['fernandes_fin_lit'],
-        num_demo_participants=4
-    )
+    # dict(
+    #     name='questionnaires',
+    #     display_name="Demographics / common questions",
+    #     app_sequence=['questionnaires'],
+    #     num_demo_participants=4
+    # ),
+    # dict(
+    #     name='fernandes',
+    #     display_name="Fernandes et al. 2014 - Financial Literacy",
+    #     app_sequence=['fernandes_fin_lit'],
+    #     num_demo_participants=4
+    # )
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
