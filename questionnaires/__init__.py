@@ -13,6 +13,24 @@ class C(BaseConstants):
 
     PAYMENT_PROBABILITY = 0.1
 
+    RELIGIONS = [
+        'Christian',
+        "Muslim",
+        "Jewish",
+        "Buddhist",
+        "Hindu",
+        "other",
+        "nothing in particular",
+        'prefer not to tell'
+    ]
+    
+    EDUCATION = [
+        "A-levels, Abitur, Matura",
+        "Bachelor's degree",
+        "Master's degree",
+        "Doctorate Degree"
+    ]
+
 
 class Subsession(BaseSubsession):
     pass
@@ -23,39 +41,40 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    # demographics
     age = models.IntegerField(min=0, max=120, label="How old are you (years)?")
     gender = models.StringField(choices=['female', 'male', 'other', 'prefer not to tell'], label="What is your gender?", widget=widgets.RadioSelect)
-    economics = models.BooleanField(choices=[(True, 'Yes'), (False, 'No')], label="Have you ever studied business or economics?")
-    soep_risk = models.IntegerField(choices=list(range(0, 11)), label="How do you see yourself: Are you generally willing to take risks or do you try to avoid them (0 = not willing to take risks at all / 10 = very willing to take risks)", widget=widgets.RadioSelectHorizontal)
+    field_of_study = models.StringField(label="Which is your (major) field of studies?")
+    nationality = models.StringField(label="What is your nationality?")
+    # from: West Europe Survey (WEUP)
+    religion = models.StringField(choices=C.RELIGIONS, label="What is your present religion, if any?")
+    education_level = models.StringField(choices=C.EDUCATION, label="What is your highest level of educational achievement?")
 
+    # risk (Socioeconomic Panel, Germany)
+    soep_risk = models.IntegerField(choices=list(range(0, 11)), label="How do you see <b>yourself</b>: Are you generally willing to take risks or do you try to avoid them?<br> (0 = not willing to take risks at all / 10 = very willing to take risks)", widget=widgets.RadioSelectHorizontal)
+
+    soep_risk_others = models.IntegerField(choices=list(range(0, 11)),
+                                    label="How do you see <b>others</b>: Do you think most people are generally willing to take risks or do they try to avoid them?<br> (0 = most people are not willing to take risks at all / 10 = most people are very willing to take risks)",
+                                    widget=widgets.RadioSelectHorizontal)
+
+    # payments
     pay_participant = models.BooleanField(initial=False)
-
     iban = models.StringField(required=True, label="IBAN:")
     iban_repeat = models.StringField(required=True, label="IBAN (repeat):")
 
-    # indicators
-    female = models.BooleanField()
-    male = models.BooleanField()
-    other_gender = models.BooleanField()
-    na_gender = models.BooleanField()
-
-
-# FUNCTIONS
-def set_indicators(player: Player):
-    player.female = player.gender == 'female'
-    player.male = player.gender == 'male'
-    player.other_gender = player.gender == 'other'
-    player.na_gender = player.gender == 'prefer not to tell'
-
 
 # PAGES
+class Risk(Page):
+    form_model = 'player'
+    form_fields = ['soep_risk', 'soep_risk_others']
+
+
 class Demographics(Page):
     form_model = 'player'
-    form_fields = ['age', 'gender', 'economics', 'soep_risk']
+    form_fields = ['age', 'gender', 'nationality', 'religion', 'field_of_study', 'education_level']
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        set_indicators(player)
         player.pay_participant = random.random() < C.PAYMENT_PROBABILITY
 
 
@@ -77,4 +96,4 @@ class LastPage(Page):
     pass
 
 
-page_sequence = [Demographics, Payments, LastPage]
+page_sequence = [Risk, Demographics, Payments, LastPage]
