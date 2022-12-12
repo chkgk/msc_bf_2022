@@ -12,7 +12,7 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
 
     STUDY_LINKS = [
-        'https://www.google.com',
+        'https://www.soscisurvey.de/test336091/',
         'https://www.apple.com',
         'https://www.nytimes.com',
         # 'https://www.uibk.ac.at'
