@@ -1,0 +1,14 @@
+{{ extends 'global/Page.html' }}
+{{ block title }}Payments{{ endblock }}
+
+{{ block content }}
+
+<p>Congratulations! You have been selected for payment!</p>
+<p>In addition to the extra credit points, you will receive {{ final_pay }}.</p>
+<p>Please enter your name and international bank account number (IBAN) below. Make sure to include the letters in the beginning. Double-check your inputs!</p>
+
+{{ formfields }}
+
+{{ next_button }}
+
+{{ endblock }}

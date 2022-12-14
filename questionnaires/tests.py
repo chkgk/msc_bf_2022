@@ -22,7 +22,12 @@ class PlayerBot(Bot):
         if self.player.pay_participant:
             yield Payments, {
                 'iban': 'asdf',
-                'iban_repeat': 'asdf'
+                'iban_repeat': 'asdf',
+                'name': 'blah'
+            }
+        else:
+            yield Credit, {
+                'name': 'blah'
             }
 
         yield Submission(LastPage, check_html=False)

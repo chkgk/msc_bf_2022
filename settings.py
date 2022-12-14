@@ -7,6 +7,15 @@ SESSION_CONFIGS = [
         app_sequence=['combination', 'fernandes_fin_lit', 'questionnaires'],
         num_demo_participants=4
     ),
+    dict(
+        name='combined_exp',
+        display_name="FeichtnerStuck",
+        app_sequence=[
+            'Instructions1',
+            'banks_two_assets',
+            'Questionaire'],
+        num_demo_participants=4
+    ),
     # dict(
     #     name='questionnaires',
     #     display_name="Demographics / common questions",
@@ -27,10 +36,10 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
+    real_world_currency_per_point=0.10, participation_fee=0.00, doc=""
 )
 
-PARTICIPANT_FIELDS = []
+PARTICIPANT_FIELDS = ['adt2_choice_sets', 'adt5_choice_sets', 'payment_round', 'paid_for', 'selected_for_payment']
 SESSION_FIELDS = []
 
 # ISO-639 code
@@ -39,7 +48,8 @@ LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'EUR'
-USE_POINTS = False
+USE_POINTS = True
+POINTS_CUSTOM_NAME = 'ECU'
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable

@@ -13,7 +13,7 @@ class C(BaseConstants):
 
     STUDY_LINKS = [
         'https://www.soscisurvey.de/test336091/',
-        'https://www.apple.com',
+        'https://www.soscisurvey.de/risk-aversion-PB/',
         'https://www.nytimes.com',
         # 'https://www.uibk.ac.at'
     ]

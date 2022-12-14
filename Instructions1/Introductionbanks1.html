@@ -1,0 +1,43 @@
+{{ extends 'global/Page.html' }}
+{{ block title }}Part 1: Investment Game{{ endblock }}
+
+{{ block content }}
+
+<p>    
+This section consists of 10 rounds. 
+ 
+For each round of investment decisions, you start with a balance of 100 ECU, which you can distribute how you want.
+    You are able to invest in two different assets. This experiment is based on a coin toss. Each asset pays a different
+    amount of Experimental Currency Units (ECU), whether heads or tails come up. You can allocate a minimum of 0 and a maximum of 100 ECU per asset.
+    In total you have to divide the 100 ECU between the two assets according to your preferences. For example, if you
+    invest 100 ECU in "Asset A", 0 ECU are invested in "Asset B". In total you have to divide the 100 ECU between both
+    assets. For each decision round the sum has to equal 100 ECU in order to continue.
+
+</p>
+<p>
+    
+In each round, the payouts for each asset differ. You will see how much "Asset A" pays out in the event of heads or
+    tails and how much "Asset B" pays out in the event of heads or tails as well. The payout of each project is
+    displayed per 1 ECU invested. A graph shows you how many ECU are invested in each of your assets.
+    
+</p>
+<p>
+The payout of each asset is calculated from the following formula: 
+</p>
+    
+<p>Payout (in ECU) = invested ECU x asset payout at head/tails.</p> 
+
+<p>    
+    
+The coin toss doesn't happen until the end of the experiment, one of your rounds is randomly selected and a coin toss is
+    generated. Your payout is then calculated based on this round.
+</p> 
+<p>
+Your decisions have a direct effect on your payout, so consider your choices carefully. There is no trial round for this
+    game. Once you understand this click on "Next".
+</p>
+
+    
+{{ next_button }}
+
+{{ endblock }}

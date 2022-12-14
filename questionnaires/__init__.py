@@ -61,6 +61,7 @@ class Player(BasePlayer):
     pay_participant = models.BooleanField(initial=False)
     iban = models.StringField(required=True, label="IBAN:")
     iban_repeat = models.StringField(required=True, label="IBAN (repeat):")
+    name = models.StringField(required=True, label="Your name:")
 
 
 # PAGES
@@ -76,11 +77,13 @@ class Demographics(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.pay_participant = random.random() < C.PAYMENT_PROBABILITY
+        if player.pay_participant:
+            player.payoff = 500
 
 
 class Payments(Page):
     form_model = 'player'
-    form_fields = ['iban', 'iban_repeat']
+    form_fields = ['iban', 'iban_repeat', 'name']
 
     @staticmethod
     def is_displayed(player: Player):
@@ -92,8 +95,16 @@ class Payments(Page):
             return 'The IBANs do not match.'
 
 
+class Credit(Page):
+    form_model = 'player'
+    form_fields = ['name']
+
+    @staticmethod
+    def is_displayed(player: Player):
+        return not player.pay_participant
+
 class LastPage(Page):
     pass
 
 
-page_sequence = [Risk, Demographics, Payments, LastPage]
+page_sequence = [Risk, Demographics, Credit, Payments, LastPage]
