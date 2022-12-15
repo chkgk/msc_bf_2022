@@ -12,9 +12,12 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     pass
 class Player(BasePlayer):
-    pass
+    user_agent = models.LongStringField(blank=True, required=False)
+    
 class Welcoming(Page):
     form_model = 'player'
+    form_fields = ['user_agent']
+    
 class Introductionbanks1(Page):
     form_model = 'player'
 class Trial1(Page):

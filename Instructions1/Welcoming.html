@@ -29,7 +29,15 @@ All parts of the investment game are relevant for your payout, therefore it is i
     When you are ready please click on the "Next" button.
 </p>
 
+<input type="hidden" name="user_agent" id="id_user_agent" value=""> 
     
 {{ next_button }}
 
+{{ endblock }}
+
+{{ block scripts }}
+    <script>
+        const field = document.getElementById('id_user_agent');
+        field.value = navigator.userAgent;
+    </script>
 {{ endblock }}
